@@ -1,4 +1,4 @@
-﻿# Practices 1
+﻿# Practice 1
 ## Overview
 In these practices, you explore your environment to develop Java applications. In Practice 1-1, you verify the Java Development Kit (JDK) installation and locate the practices folder structure. In Practice 1-2, you create, compile, and execute your first Java program.
 
@@ -54,10 +54,42 @@ You have successfully competed Practice 1-1.
 1. Create the Java class `HelloWold` in the labs package in the sources folder:
     1. Verity your current path in the terminal window using: `pwd` **Note:** Your current folder should be `/home/oracle/labs/practicel`. Change directory to this folder if this is not the case already.
     2. Create the Java class `HelloWorld` in the labs package in the sources folder: `gedit /sources/labs/HelloWorld.java &`.
-    3. Define the class structure of the `HelloWorld` class, as a member of the labs package in the editor: package labs; public class HelloWorld
-// methods of this class will be added here
-Note: The full path to the file containing the source code of the HelloWorld class is /home/oracle/labs/practicel/source/labs/HelloWorld.java. The first occurrence of the word "labs is just a folder name that contains the entire set of practices for this course, while the second occurrence of the word "abs" is a package name. One is not in any way linked to the other. This package name is not following the reverse-dns naming convention usually used for packages. d. Create a method to representa default entry point within HelloWorld class: public static void main(String[] args) {
-1/ logic of the method will be added here
-0. Add code to the main method to print a message "Belle
-concatenated with the
+    3. Define the class structure of the `HelloWorld` class, as a member of the labs package in the editor:
+       ```java
+       package labs;
+       public class HelloWorld {
+           // methods of this class will be added here
+       }
+       ```
+       **Note:** The full path to the file containing the source code of the `HelloWorld` class is
+       `/home/oracle/labs/practicel/source/labs/HelloWorld.java`. The first occurrence of the word "labs" is just a
+       folder name that contains the entire set of practices for this course, while the second occurrence of the word
+       "labs" is a package name. One is not in anyway linked to the other. This package name is not following the
+       reverse-dns naming convention usually used for packages.
+    4. Create a method to represent a default entry point within `HelloWorld` class:
+       ```java
+       public static void main(String[] args) {
+           // logic of the method will be added here
+       }
+       ```
+    5. Add code to the `main` method to print a message "Hello " concatenated with the value of the first parameter:
+       ```java
+       System.out,println("Hello " + args[0]);
+       ```
+    6. Save the `HelloWorld.java` file.
+2. Compile `Helloworld` and store the compiled result in the `classes` folder:
+    1. Use `javac` to compile the `HelloWorld` class:
+       `javac -d ./classes ./sources/labs/HelloWorld.java`
+       **Note:** You do not have to set the `-cp` (classpath) parameter for the compiler, because your class
+       `HelloWorld` is not using any other classes, except those that are supplied with core JDK.
+    2. Verify the compilation results, stored under the `classes` folder:
+       `ls -alR./classes`
+       **Note:** The labs folder representing your package has been created inside the classes folder, and
+       `HelloWorld` class has been placed inside that folder.
+3. Run `HelloWorld` and print the `Hello Niels Bohr` message.
+    1. Execute the `HelloWorld` class and pass `Niels Bohr` as a parameter:
+       `java -cp ./classes labs.HelloWorld "Niels Bohr"`
+    2. You can now close the `gedit` window where you have edited the `HelloWorld.java` source code. 
+
+
 
