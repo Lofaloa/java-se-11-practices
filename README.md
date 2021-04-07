@@ -1,2 +1,2 @@
-# java-se-11-practices
-Practices made during the "Java SE 11: Programming Complete" course.
+# Java SE 11: Programming Complete Practices
+Practices made during the [Java SE 11: Programming Complete](https://learn.oracle.com/ols/course/java-se-programming-complete/82508/85200) course. I follow the training with the intent of passing the [Oracle Certified Professional Java SE Developer certification](https://learn.oracle.com/ols/learning-path/oracle-certified-professional-java-se-developer-register-now-for-25/82508/85217).
