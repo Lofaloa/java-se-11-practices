@@ -16,10 +16,7 @@
  */
 package me.loganfarci.tutorials.shop.app;
 
-import me.loganfarci.tutorials.shop.data.Drink;
-import me.loganfarci.tutorials.shop.data.Food;
-import me.loganfarci.tutorials.shop.data.Product;
-import me.loganfarci.tutorials.shop.data.Rating;
+import me.loganfarci.tutorials.shop.data.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -33,11 +30,12 @@ import java.time.Period;
 public class Shop {
 
     public static void main(String[] args) {
-        Product tea = new Drink(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-        Product coffee = new Drink(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
-        Product cake = new Food(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED, LocalDate.now());
-        Product chocolate = new Food(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED, LocalDate.now());
-        Product chocolateDrink = new Drink(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED);
+        ProductManager manager = new ProductManager();
+        Product tea = manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+        Product coffee = manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
+        Product cake = manager.createProduct(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED, LocalDate.now());
+        Product chocolate = manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED, LocalDate.now());
+        Product chocolateDrink = manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED);
 
         chocolate = chocolate.applyRating(Rating.FOUR_RATED);
 
