@@ -44,6 +44,11 @@ public class Food extends Product {
     }
 
     @Override
+    public Product applyRating(Rating rating) {
+        return new Food(getId(), getName(), getPrice(), rating, bestBefore);
+    }
+
+    @Override
     public String toString() {
         return super.toString() + String.format(" Best before: %s", bestBefore);
     }

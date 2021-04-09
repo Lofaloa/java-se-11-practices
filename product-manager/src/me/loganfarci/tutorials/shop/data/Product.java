@@ -18,6 +18,7 @@ package me.loganfarci.tutorials.shop.data;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import static java.math.RoundingMode.HALF_UP;
@@ -33,7 +34,7 @@ import static me.loganfarci.tutorials.shop.data.Rating.*;
  * @version 4.0
  * @author Logan Farci
  */
-public class Product {
+public abstract class Product {
 
     /**
      * A constant that defines a
@@ -88,17 +89,16 @@ public class Product {
         return price.multiply(DISCOUNT_RATE).setScale(2, HALF_UP);
     }
 
-    public Product applyRating(Rating rating) {
-        return new Product(id, name, price, rating);
-    }
+    public LocalDate getBestBefore() { return LocalDate.now(); }
+
+    public abstract Product applyRating(Rating rating);
 
     @Override
     public String toString() {
-        System.out.println("1");
         String priceText = NumberFormat.getCurrencyInstance().format(price);
         String discountText = NumberFormat.getCurrencyInstance().format(getDiscount());
-        String format = "ID: %-4d Name: %-15s Price: %-10s Rating: %-5s Discount: %s";
-        return String.format(format, id, name, priceText, rating.getStars(), discountText);
+        String format = "ID: %-4d Name: %-15s Price: %-10s Rating: %-5s Discount: %s Best before: %s";
+        return String.format(format, id, name, priceText, rating.getStars(), discountText, getBestBefore());
     }
 
     @Override

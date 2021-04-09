@@ -39,6 +39,8 @@ public class Shop {
         Product chocolate = new Food(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED, LocalDate.now());
         Product chocolateDrink = new Drink(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED);
 
+        chocolate = chocolate.applyRating(Rating.FOUR_RATED);
+
         System.out.println(tea);
         System.out.println(coffee);
         System.out.println(cake);
