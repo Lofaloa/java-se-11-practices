@@ -18,6 +18,7 @@ package me.loganfarci.tutorials.shop.data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Food extends Product {
 
@@ -35,6 +36,11 @@ public class Food extends Product {
      */
     public LocalDate getBestBefore() {
         return bestBefore;
+    }
+
+    @Override
+    public BigDecimal getDiscount() {
+        return (bestBefore.isEqual(LocalDate.now())) ? super.getDiscount() : BigDecimal.ZERO;
     }
 
     @Override

@@ -18,6 +18,7 @@ package me.loganfarci.tutorials.shop.data;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.Objects;
 
 import static java.math.RoundingMode.HALF_UP;
 import static me.loganfarci.tutorials.shop.data.Rating.*;
@@ -28,8 +29,7 @@ import static me.loganfarci.tutorials.shop.data.Rating.*;
  * <br>
  * Each product has an id, name and price.
  * <br>
- * Each product can have a discount, calculated based on a
- * {@link DISCOUNT_RATE discount rate}
+ * Each product can have a discount, calculated based on a discount rate.
  * @version 4.0
  * @author Logan Farci
  */
@@ -80,8 +80,7 @@ public class Product {
     }
 
     /**
-     * Calculates discount based on a product price and
-     * {@link DISCOUNT_RATE discount rate}
+     * Calculates discount based on a product price and discount rate.
      * @return a {@link java.math.BigDecimal BigDecimal}
      * value of the discount.
      */
@@ -97,7 +96,25 @@ public class Product {
     public String toString() {
         System.out.println("1");
         String priceText = NumberFormat.getCurrencyInstance().format(price);
-        String format = "ID: %-4d Name: %-15s Price: %-10s Rating: %-5s";
-        return String.format(format, id, name, priceText, rating.getStars());
+        String discountText = NumberFormat.getCurrencyInstance().format(getDiscount());
+        String format = "ID: %-4d Name: %-15s Price: %-10s Rating: %-5s Discount: %s";
+        return String.format(format, id, name, priceText, rating.getStars(), discountText);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Product) {
+            final Product other = (Product) obj;
+            return this.id == other.id && Objects.equals(this.name, other.name);
+        }
+        return false;
     }
 }
