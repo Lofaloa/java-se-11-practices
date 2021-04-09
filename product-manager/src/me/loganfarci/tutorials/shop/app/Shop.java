@@ -16,10 +16,13 @@
  */
 package me.loganfarci.tutorials.shop.app;
 
+import me.loganfarci.tutorials.shop.data.Drink;
+import me.loganfarci.tutorials.shop.data.Food;
 import me.loganfarci.tutorials.shop.data.Product;
 import me.loganfarci.tutorials.shop.data.Rating;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
  * {@code Shop} class represents an application that manages Products.
@@ -40,9 +43,9 @@ public class Shop {
     }
 
     public static void main(String[] args) {
-        Product tea = new Product(101, "Tea", BigDecimal.valueOf(1.99));
-        Product coffee = new Product(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
-        Product cake = new Product(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED);
+        Product tea = new Drink(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+        Product coffee = new Drink(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
+        Product cake = new Food(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED, LocalDate.now());
         Product p = new Product();
 
         cake = cake.applyRating(Rating.ONE_RATED);
