@@ -36,4 +36,9 @@ public class Food extends Product {
     public LocalDate getBestBefore() {
         return bestBefore;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format(" Best before: %s", bestBefore);
+    }
 }

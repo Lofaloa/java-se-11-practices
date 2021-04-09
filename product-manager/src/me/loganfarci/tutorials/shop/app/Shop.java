@@ -23,6 +23,7 @@ import me.loganfarci.tutorials.shop.data.Rating;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 
 /**
  * {@code Shop} class represents an application that manages Products.
@@ -31,28 +32,17 @@ import java.time.LocalDate;
  */
 public class Shop {
 
-    private static void printProduct(final Product product) {
-        String line = String.format(
-                "%d %s %f %s",
-                product.getId(),
-                product.getName(),
-                product.getPrice(),
-                product.getRating().getStars()
-        );
-        System.out.println(line);
-    }
-
     public static void main(String[] args) {
         Product tea = new Drink(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
         Product coffee = new Drink(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
         Product cake = new Food(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED, LocalDate.now());
-        Product p = new Product();
+        Product chocolate = new Food(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED, LocalDate.now());
+        Product chocolateDrink = new Drink(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED);
 
-        cake = cake.applyRating(Rating.ONE_RATED);
-
-        printProduct(tea);
-        printProduct(coffee);
-        printProduct(cake);
-        printProduct(p);
+        System.out.println(tea);
+        System.out.println(coffee);
+        System.out.println(cake);
+        System.out.println(chocolate);
+        System.out.println(chocolateDrink);
     }
 }

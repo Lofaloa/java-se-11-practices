@@ -17,6 +17,8 @@
 package me.loganfarci.tutorials.shop.data;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
+
 import static java.math.RoundingMode.HALF_UP;
 import static me.loganfarci.tutorials.shop.data.Rating.*;
 
@@ -91,4 +93,11 @@ public class Product {
         return new Product(id, name, price, rating);
     }
 
+    @Override
+    public String toString() {
+        System.out.println("1");
+        String priceText = NumberFormat.getCurrencyInstance().format(price);
+        String format = "ID: %-4d Name: %-15s Price: %-10s Rating: %-5s";
+        return String.format(format, id, name, priceText, rating.getStars());
+    }
 }
