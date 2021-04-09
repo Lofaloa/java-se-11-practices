@@ -17,6 +17,9 @@
 package me.loganfarci.tutorials.shop.app;
 
 import me.loganfarci.tutorials.shop.data.Product;
+import me.loganfarci.tutorials.shop.data.Rating;
+
+import java.math.BigDecimal;
 
 /**
  * {@code Shop} class represents an application that manages Products.
@@ -25,8 +28,28 @@ import me.loganfarci.tutorials.shop.data.Product;
  */
 public class Shop {
 
-    public static void main(String[] args) {
-        Product product = new Product();
+    private static void printProduct(final Product product) {
+        String line = String.format(
+                "%d %s %f %s",
+                product.getId(),
+                product.getName(),
+                product.getPrice(),
+                product.getRating().getStars()
+        );
+        System.out.println(line);
+    }
 
+    public static void main(String[] args) {
+        Product tea = new Product(101, "Tea", BigDecimal.valueOf(1.99));
+        Product coffee = new Product(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
+        Product cake = new Product(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED);
+        Product p = new Product();
+
+        cake = cake.applyRating(Rating.ONE_RATED);
+
+        printProduct(tea);
+        printProduct(coffee);
+        printProduct(cake);
+        printProduct(p);
     }
 }
