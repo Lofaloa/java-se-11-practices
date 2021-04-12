@@ -20,7 +20,6 @@ import me.loganfarci.tutorials.shop.data.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.Period;
 
 /**
  * {@code Shop} class represents an application that manages Products.

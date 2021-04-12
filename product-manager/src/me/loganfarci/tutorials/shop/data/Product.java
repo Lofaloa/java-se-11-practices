@@ -34,7 +34,7 @@ import static me.loganfarci.tutorials.shop.data.Rating.*;
  * @version 4.0
  * @author Logan Farci
  */
-public abstract class Product {
+public abstract class Product implements Rateable<Product> {
 
     /**
      * A constant that defines a
@@ -76,6 +76,7 @@ public abstract class Product {
         return price;
     }
 
+    @Override
     public Rating getRating() {
         return rating;
     }
@@ -90,8 +91,6 @@ public abstract class Product {
     }
 
     public LocalDate getBestBefore() { return LocalDate.now(); }
-
-    public abstract Product applyRating(Rating rating);
 
     @Override
     public String toString() {
