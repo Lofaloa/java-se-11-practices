@@ -20,6 +20,7 @@ import me.loganfarci.tutorials.shop.data.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Locale;
 
 /**
  * {@code Shop} class represents an application that manages Products.
@@ -29,19 +30,22 @@ import java.time.LocalDate;
 public class Shop {
 
     public static void main(String[] args) {
-        ProductManager manager = new ProductManager();
+        ProductManager manager = new ProductManager(Locale.US);
         Product tea = manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-        Product coffee = manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
-        Product cake = manager.createProduct(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED, LocalDate.now());
-        Product chocolate = manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED, LocalDate.now());
-        Product chocolateDrink = manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED);
-
-        chocolate = chocolate.applyRating(Rating.FOUR_RATED);
-
-        System.out.println(tea);
-        System.out.println(coffee);
-        System.out.println(cake);
-        System.out.println(chocolate);
-        System.out.println(chocolateDrink);
+        manager.printProductReport();
+        manager.reviewProduct(tea, Rating.FOUR_RATED, "Nice hot cup of tea!");
+        manager.printProductReport();
+//        Product coffee = manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
+//        Product cake = manager.createProduct(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED, LocalDate.now());
+//        Product chocolate = manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED, LocalDate.now());
+//        Product chocolateDrink = manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED);
+//
+//        chocolate = chocolate.applyRating(Rating.FOUR_RATED);
+//
+//        System.out.println(tea);
+//        System.out.println(coffee);
+//        System.out.println(cake);
+//        System.out.println(chocolate);
+//        System.out.println(chocolateDrink);
     }
 }
