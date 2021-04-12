@@ -19,7 +19,6 @@ package me.loganfarci.tutorials.shop.app;
 import me.loganfarci.tutorials.shop.data.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Locale;
 
 /**
@@ -34,6 +33,10 @@ public class Shop {
         Product tea = manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
         manager.printProductReport();
         manager.reviewProduct(tea, Rating.FOUR_RATED, "Nice hot cup of tea!");
+        manager.reviewProduct(tea, Rating.FIVE_RATED, "Love tea!");
+        manager.reviewProduct(tea, Rating.ONE_RATED, "Hate it.");
+        manager.reviewProduct(tea, Rating.TWO_RATED, "Green tea, burk!");
+        manager.reviewProduct(tea, Rating.THREE_RATED, "That is all right I guess.");
         manager.printProductReport();
 //        Product coffee = manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
 //        Product cake = manager.createProduct(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED, LocalDate.now());
