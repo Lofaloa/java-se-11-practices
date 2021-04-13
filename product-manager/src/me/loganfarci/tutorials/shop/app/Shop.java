@@ -19,6 +19,8 @@ package me.loganfarci.tutorials.shop.app;
 import me.loganfarci.tutorials.shop.data.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Locale;
 
 /**
@@ -30,25 +32,38 @@ public class Shop {
 
     public static void main(String[] args) {
         ProductManager manager = new ProductManager(Locale.US);
+        
         Product tea = manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-        manager.printProductReport();
-        manager.reviewProduct(tea, Rating.FOUR_RATED, "Nice hot cup of tea!");
-        manager.reviewProduct(tea, Rating.FIVE_RATED, "Love tea!");
-        manager.reviewProduct(tea, Rating.ONE_RATED, "Hate it.");
-        manager.reviewProduct(tea, Rating.TWO_RATED, "Green tea, burk!");
-        manager.reviewProduct(tea, Rating.THREE_RATED, "That is all right I guess.");
-        manager.printProductReport();
-//        Product coffee = manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_RATED);
-//        Product cake = manager.createProduct(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_RATED, LocalDate.now());
-//        Product chocolate = manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED, LocalDate.now());
-//        Product chocolateDrink = manager.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_RATED);
-//
-//        chocolate = chocolate.applyRating(Rating.FOUR_RATED);
-//
-//        System.out.println(tea);
-//        System.out.println(coffee);
-//        System.out.println(cake);
-//        System.out.println(chocolate);
-//        System.out.println(chocolateDrink);
+        tea = manager.reviewProduct(tea, Rating.FOUR_RATED, "Nice hot cup of tea!");
+        tea = manager.reviewProduct(tea, Rating.FIVE_RATED, "Love tea!");
+        tea = manager.reviewProduct(tea, Rating.ONE_RATED, "Hate it.");
+        tea = manager.reviewProduct(tea, Rating.TWO_RATED, "Green tea, burk!");
+        tea = manager.reviewProduct(tea, Rating.THREE_RATED, "That is all right I guess.");
+        manager.printProductReport(tea);
+
+        Product coffee = manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+        coffee = manager.reviewProduct(coffee, Rating.FOUR_RATED, "Nice hot cup of coffee!");
+        coffee = manager.reviewProduct(coffee, Rating.FIVE_RATED, "Love coffee!");
+        coffee = manager.reviewProduct(coffee, Rating.THREE_RATED, "That is all right I guess.");
+        manager.printProductReport(coffee);
+
+        Product cake = manager.createProduct(103, "Cake", BigDecimal.valueOf(2.99), Rating.NOT_RATED, LocalDate.now().plus(Period.ofDays(2)));
+        cake = manager.reviewProduct(cake, Rating.FOUR_RATED, "Nice hot cup of cake!");
+        cake = manager.reviewProduct(cake, Rating.FIVE_RATED, "Love cake!");
+        cake = manager.reviewProduct(cake, Rating.THREE_RATED, "That is all right I guess.");
+        manager.printProductReport(cake);
+
+        Product hotChocolate = manager.createProduct(104, "Hot chocolate", BigDecimal.valueOf(3.99), Rating.NOT_RATED);
+        hotChocolate = manager.reviewProduct(hotChocolate, Rating.FIVE_RATED, "Love hot chocolate!");
+        hotChocolate = manager.reviewProduct(hotChocolate, Rating.ONE_RATED, "Hate it.");
+        hotChocolate = manager.reviewProduct(hotChocolate, Rating.TWO_RATED, "Green hot chocolate, burk!");
+        hotChocolate = manager.reviewProduct(hotChocolate, Rating.THREE_RATED, "That is all right I guess.");
+        manager.printProductReport(hotChocolate);
+        
+        Product chocolate = manager.createProduct(105, "Chocolate", BigDecimal.valueOf(3.99), Rating.NOT_RATED, LocalDate.now().plus(Period.ofDays(3)));
+        chocolate = manager.reviewProduct(chocolate, Rating.ONE_RATED, "Hate it.");
+        chocolate = manager.reviewProduct(chocolate, Rating.TWO_RATED, "Green chocolate, burk!");
+        manager.printProductReport(chocolate);
+        
     }
 }
