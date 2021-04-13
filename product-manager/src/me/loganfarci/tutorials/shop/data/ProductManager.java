@@ -42,6 +42,17 @@ public class ProductManager {
         this.moneyFormat = NumberFormat.getCurrencyInstance(locale);
     }
 
+    public Product findProduct(int id) {
+        Product result = null;
+        for (Product product: products.keySet()) {
+            if (product.getId() == id) {
+                result = product;
+                break;
+            }
+        }
+        return result;
+    }
+
     public Product createProduct(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
         Product product = new Food(id, name, price, rating, bestBefore);
         products.putIfAbsent(product, new ArrayList<>());
@@ -68,9 +79,14 @@ public class ProductManager {
         return product;
     }
 
+    public Product reviewProduct(int id, Rating rating, String comments) {
+        return reviewProduct(findProduct(id), rating, comments);
+    }
+
     public void printProductReport(Product product) {
         StringBuilder txt = new StringBuilder();
         List<Review> reviews = products.get(product);
+        Collections.sort(reviews);
 
         txt.append(MessageFormat.format(resources.getString("product"),
                 product.getName(),
@@ -90,6 +106,10 @@ public class ProductManager {
             txt.append('\n');
         }
         System.out.println(txt);
+    }
+
+    public void printProductReport(int id) {
+        printProductReport(findProduct(id));
     }
 
 }

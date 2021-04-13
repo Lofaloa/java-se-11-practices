@@ -33,37 +33,31 @@ public class Shop {
     public static void main(String[] args) {
         ProductManager manager = new ProductManager(Locale.US);
         
-        Product tea = manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-        tea = manager.reviewProduct(tea, Rating.FOUR_RATED, "Nice hot cup of tea!");
-        tea = manager.reviewProduct(tea, Rating.FIVE_RATED, "Love tea!");
-        tea = manager.reviewProduct(tea, Rating.ONE_RATED, "Hate it.");
-        tea = manager.reviewProduct(tea, Rating.TWO_RATED, "Green tea, burk!");
-        tea = manager.reviewProduct(tea, Rating.THREE_RATED, "That is all right I guess.");
-        manager.printProductReport(tea);
+        manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+        manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+        manager.createProduct(103, "Cake", BigDecimal.valueOf(2.99), Rating.NOT_RATED, LocalDate.now().plus(Period.ofDays(2)));
+        manager.createProduct(104, "Chocolate", BigDecimal.valueOf(3.99), Rating.NOT_RATED, LocalDate.now().plus(Period.ofDays(3)));
 
-        Product coffee = manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-        coffee = manager.reviewProduct(coffee, Rating.FOUR_RATED, "Nice hot cup of coffee!");
-        coffee = manager.reviewProduct(coffee, Rating.FIVE_RATED, "Love coffee!");
-        coffee = manager.reviewProduct(coffee, Rating.THREE_RATED, "That is all right I guess.");
-        manager.printProductReport(coffee);
+        manager.reviewProduct(101, Rating.FOUR_RATED, "Nice hot cup of tea!");
+        manager.reviewProduct(101, Rating.FIVE_RATED, "Love tea!");
+        manager.reviewProduct(101, Rating.ONE_RATED, "Hate it.");
+        manager.reviewProduct(101, Rating.TWO_RATED, "Green tea, burk!");
+        manager.reviewProduct(101, Rating.THREE_RATED, "That is all right I guess.");
 
-        Product cake = manager.createProduct(103, "Cake", BigDecimal.valueOf(2.99), Rating.NOT_RATED, LocalDate.now().plus(Period.ofDays(2)));
-        cake = manager.reviewProduct(cake, Rating.FOUR_RATED, "Nice hot cup of cake!");
-        cake = manager.reviewProduct(cake, Rating.FIVE_RATED, "Love cake!");
-        cake = manager.reviewProduct(cake, Rating.THREE_RATED, "That is all right I guess.");
-        manager.printProductReport(cake);
+        manager.reviewProduct(102, Rating.FOUR_RATED, "Nice hot cup of coffee!");
+        manager.reviewProduct(102, Rating.FIVE_RATED, "Love coffee!");
+        manager.reviewProduct(102, Rating.THREE_RATED, "That is all right I guess.");
 
-        Product hotChocolate = manager.createProduct(104, "Hot chocolate", BigDecimal.valueOf(3.99), Rating.NOT_RATED);
-        hotChocolate = manager.reviewProduct(hotChocolate, Rating.FIVE_RATED, "Love hot chocolate!");
-        hotChocolate = manager.reviewProduct(hotChocolate, Rating.ONE_RATED, "Hate it.");
-        hotChocolate = manager.reviewProduct(hotChocolate, Rating.TWO_RATED, "Green hot chocolate, burk!");
-        hotChocolate = manager.reviewProduct(hotChocolate, Rating.THREE_RATED, "That is all right I guess.");
-        manager.printProductReport(hotChocolate);
-        
-        Product chocolate = manager.createProduct(105, "Chocolate", BigDecimal.valueOf(3.99), Rating.NOT_RATED, LocalDate.now().plus(Period.ofDays(3)));
-        chocolate = manager.reviewProduct(chocolate, Rating.ONE_RATED, "Hate it.");
-        chocolate = manager.reviewProduct(chocolate, Rating.TWO_RATED, "Green chocolate, burk!");
-        manager.printProductReport(chocolate);
-        
+        manager.reviewProduct(103, Rating.FOUR_RATED, "Nice hot cup of cake!");
+        manager.reviewProduct(103, Rating.FIVE_RATED, "Love cake!");
+        manager.reviewProduct(103, Rating.THREE_RATED, "That is all right I guess.");
+
+        manager.reviewProduct(104, Rating.ONE_RATED, "Hate it.");
+        manager.reviewProduct(104, Rating.TWO_RATED, "Green chocolate, burk!");
+
+        manager.printProductReport(101);
+        manager.printProductReport(102);
+        manager.printProductReport(103);
+        manager.printProductReport(104);
     }
 }
