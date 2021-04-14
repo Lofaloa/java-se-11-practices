@@ -21,6 +21,7 @@ import me.loganfarci.tutorials.shop.data.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Comparator;
 import java.util.Locale;
 
 /**
@@ -54,9 +55,15 @@ public class Shop {
         manager.reviewProduct(104, Rating.ONE_RATED, "Hate it.");
         manager.reviewProduct(104, Rating.TWO_RATED, "Green chocolate, burk!");
 
-        manager.printProductReport(101);
-        manager.printProductReport(102);
-        manager.printProductReport(103);
-        manager.printProductReport(104);
+//        manager.printProductReport(101);
+//        manager.printProductReport(102);
+//        manager.printProductReport(103);
+//        manager.printProductReport(104);
+
+        Comparator<Product> ratingSorter = (a, b) -> b.getRating().ordinal() - a.getRating().ordinal();
+        Comparator<Product> priceSorter = (a, b) -> b.getPrice().compareTo(a.getPrice());
+
+        manager.printProducts(ratingSorter.thenComparing(priceSorter));
+        manager.printProducts(ratingSorter.thenComparing(priceSorter).reversed());
     }
 }
