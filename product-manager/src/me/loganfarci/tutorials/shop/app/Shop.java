@@ -29,9 +29,8 @@ import java.util.Locale;
  * @author Logan Farci
  */
 public class Shop {
-
     public static void main(String[] args) {
-        ProductManager manager = new ProductManager(Locale.US);
+        ProductManager manager = new ProductManager("fr-BE");
         
         manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
         manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.NOT_RATED);

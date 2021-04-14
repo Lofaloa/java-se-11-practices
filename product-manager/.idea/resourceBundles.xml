@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ResourceBundleManager">
+    <file url="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages.properties" />
+    <file url="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_GB.properties" />
+    <file url="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_IT.properties" />
+    <file url="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_en_GB.properties" />
+    <file url="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_it_IT.properties" />
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages.properties" />
+      <file value="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_GB.properties" />
+      <file value="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_IT.properties" />
+      <base-name>messages</base-name>
+    </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_en_GB.properties" />
+      <file value="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_en_US.properties" />
+      <file value="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_fr_BE.properties" />
+      <file value="file://$PROJECT_DIR$/src/me/loganfarci/tutorials/shop/data/messages_it_IT.properties" />
+      <base-name>messages</base-name>
+    </custom-resource-bundle>
+  </component>
+</project>
