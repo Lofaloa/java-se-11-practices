@@ -24,10 +24,13 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class ProductManager {
 
+    private static final Logger logger = Logger.getLogger(ProductManager.class.getName());
     private static final String BUNDLE_BASE_NAME = "me.loganfarci.tutorials.shop.data.messages";
     private static Map<String, ResourceFormatter> formatters = Map.of(
             "en-GB", new ResourceFormatter(Locale.UK),
@@ -54,11 +57,11 @@ public class ProductManager {
         changeLocale(languageTag);
     }
 
-    public Product findProduct(int id) {
+    public Product findProduct(int id) throws ProductManagerException {
         return products.keySet().stream()
                 .filter(p -> p.getId() == id)
                 .findFirst()
-                .orElseGet(() -> null);
+                .orElseThrow(() -> new ProductManagerException("Unknown product id: " + id));
     }
 
     public Map<String, String> getDiscounts() {
@@ -105,7 +108,12 @@ public class ProductManager {
     }
 
     public Product reviewProduct(int id, Rating rating, String comments) {
-        return reviewProduct(findProduct(id), rating, comments);
+        try {
+            return reviewProduct(findProduct(id), rating, comments);
+        } catch (ProductManagerException e) {
+            logger.info(e.getMessage());
+        }
+        return null;
     }
 
     public void printProductReport(Product product) {
@@ -125,7 +133,11 @@ public class ProductManager {
     }
 
     public void printProductReport(int id) {
-        printProductReport(findProduct(id));
+        try {
+            printProductReport(findProduct(id));
+        } catch (ProductManagerException e) {
+            logger.info(e.getMessage());
+        }
     }
 
     public void printProducts(Predicate<Product> filter, Comparator<Product> sorter) {
@@ -140,6 +152,7 @@ public class ProductManager {
     }
 
     private static class ResourceFormatter {
+
         private Locale locale;
         private ResourceBundle resources;
         private DateTimeFormatter dateFormat;
