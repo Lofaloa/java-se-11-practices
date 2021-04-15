@@ -58,9 +58,10 @@ public class Shop {
         manager.printProductReport(104);
 
         Comparator<Product> ratingSorter = (a, b) -> b.getRating().ordinal() - a.getRating().ordinal();
-        Comparator<Product> priceSorter = (a, b) -> b.getPrice().compareTo(a.getPrice());
-
         manager.printProducts(p -> p.getPrice().floatValue() < 2, ratingSorter);
-//        manager.printProducts(ratingSorter.thenComparing(priceSorter).reversed());
+
+        manager.getDiscounts().forEach(
+                (rating, discount) -> System.out.println(rating + "\t" + discount)
+        );
     }
 }
