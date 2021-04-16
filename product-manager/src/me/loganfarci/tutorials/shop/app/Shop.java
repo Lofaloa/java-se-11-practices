@@ -18,12 +18,6 @@ package me.loganfarci.tutorials.shop.app;
 
 import me.loganfarci.tutorials.shop.data.*;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.Comparator;
-import java.util.Locale;
-
 /**
  * {@code Shop} class represents an application that manages Products.
  * @version 4.0
@@ -33,35 +27,25 @@ public class Shop {
     public static void main(String[] args) {
         ProductManager manager = new ProductManager("fr-BE");
 
-        manager.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-        manager.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-        manager.createProduct(103, "Cake", BigDecimal.valueOf(2.99), Rating.NOT_RATED, LocalDate.now().plus(Period.ofDays(2)));
-        manager.createProduct(104, "Chocolate", BigDecimal.valueOf(3.99), Rating.NOT_RATED, LocalDate.now().plus(Period.ofDays(3)));
+        manager.parseProduct("D,101,Tea,1.99,0,2020-09-19");
+        manager.printProductReport(101);
+        manager.parseReview("101,2,Rather weak tea");
+        manager.parseReview("101,4,Good tea.");
+        manager.parseReview("101,3,Nice hot cup of tea!");
+        manager.parseReview("101,1,Disappointing.");
+        manager.parseReview("101,3,Just add some lemon.");
+        manager.parseReview("101,5,Perfect tea.");
+        manager.printProductReport(101);
 
-        manager.reviewProduct(101, Rating.FOUR_RATED, "Nice hot cup of tea!");
-        manager.reviewProduct(101, Rating.FIVE_RATED, "Love tea!");
-        manager.reviewProduct(101, Rating.ONE_RATED, "Hate it.");
-        manager.reviewProduct(101, Rating.TWO_RATED, "Green tea, burk!");
-        manager.reviewProduct(101, Rating.THREE_RATED, "That is all right I guess.");
+        manager.parseProduct("F,102,Cake,3.99,0,2020-09-19");
+        manager.printProductReport(102);
+        manager.parseReview("102,2,Rather tasteless tea");
+        manager.parseReview("102,4,Good cake.");
+        manager.parseReview("102,3,Nice piece of cake!");
+        manager.parseReview("102,1,Disappointing.");
+        manager.parseReview("102,3,Just add some sugar.");
+        manager.parseReview("102,5,Perfect cake.");
+        manager.printProductReport(102);
 
-        manager.reviewProduct(102, Rating.FOUR_RATED, "Nice hot cup of coffee!");
-        manager.reviewProduct(102, Rating.FIVE_RATED, "Love coffee!");
-        manager.reviewProduct(102, Rating.THREE_RATED, "That is all right I guess.");
-
-        manager.reviewProduct(103, Rating.FOUR_RATED, "Nice hot cup of cake!");
-        manager.reviewProduct(103, Rating.FIVE_RATED, "Love cake!");
-        manager.reviewProduct(103, Rating.THREE_RATED, "That is all right I guess.");
-
-        manager.reviewProduct(104, Rating.ONE_RATED, "Hate it.");
-        manager.reviewProduct(104, Rating.TWO_RATED, "Green chocolate, burk!");
-
-        manager.printProductReport(104);
-
-        Comparator<Product> ratingSorter = (a, b) -> b.getRating().ordinal() - a.getRating().ordinal();
-        manager.printProducts(p -> p.getPrice().floatValue() < 2, ratingSorter);
-
-        manager.getDiscounts().forEach(
-                (rating, discount) -> System.out.println(rating + "\t" + discount)
-        );
     }
 }
