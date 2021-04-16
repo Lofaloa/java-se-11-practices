@@ -16,6 +16,7 @@
  */
 package me.loganfarci.tutorials.shop.data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -34,7 +35,7 @@ import static me.loganfarci.tutorials.shop.data.Rating.*;
  * @version 4.0
  * @author Logan Farci
  */
-public abstract class Product implements Rateable<Product> {
+public abstract class Product implements Rateable<Product>, Serializable {
 
     /**
      * A constant that defines a
