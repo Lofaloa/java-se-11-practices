@@ -18,6 +18,10 @@ package me.loganfarci.tutorials.shop.app;
 
 import me.loganfarci.tutorials.shop.data.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Period;
+
 /**
  * {@code Shop} class represents an application that manages Products.
  * @version 4.0
@@ -26,26 +30,16 @@ import me.loganfarci.tutorials.shop.data.*;
 public class Shop {
     public static void main(String[] args) {
         ProductManager manager = new ProductManager("fr-BE");
-
-        manager.parseProduct("D,101,Tea,1.99,0,2020-09-19");
         manager.printProductReport(101);
-        manager.parseReview("101,2,Rather weak tea");
-        manager.parseReview("101,4,Good tea.");
-        manager.parseReview("101,3,Nice hot cup of tea!");
-        manager.parseReview("101,1,Disappointing.");
-        manager.parseReview("101,3,Just add some lemon.");
-        manager.parseReview("101,5,Perfect tea.");
-        manager.printProductReport(101);
-
-        manager.parseProduct("F,102,Cake,3.99,0,2020-09-19");
         manager.printProductReport(102);
-        manager.parseReview("102,2,Rather tasteless tea");
-        manager.parseReview("102,4,Good cake.");
-        manager.parseReview("102,3,Nice piece of cake!");
-        manager.parseReview("102,1,Disappointing.");
-        manager.parseReview("102,3,Just add some sugar.");
-        manager.parseReview("102,5,Perfect cake.");
-        manager.printProductReport(102);
+        manager.printProductReport(103);
+        manager.printProductReport(104);
+        manager.printProducts(p -> true, (a, b) -> b.getRating().ordinal() - a.getRating().ordinal());
 
+        manager.createProduct(237, "Tiramisù", BigDecimal.valueOf(7.99), Rating.FIVE_RATED, LocalDate.now().plus(Period.ofDays(3)));
+        manager.reviewProduct(237, Rating.THREE_RATED, "It was ok I guess.");
+        manager.reviewProduct(237, Rating.TWO_RATED, "I hated it.");
+        manager.reviewProduct(237, Rating.FIVE_RATED, "Mamma mia! It was so good.");
+        manager.printProductReport(237);
     }
 }
