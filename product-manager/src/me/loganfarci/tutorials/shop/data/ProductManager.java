@@ -38,6 +38,7 @@ import java.util.stream.Collectors;
 
 public class ProductManager {
 
+    private static final ProductManager instance = new ProductManager();
     private static final Logger logger = Logger.getLogger(ProductManager.class.getName());
     private static final String BUNDLE_BASE_NAME = "me.loganfarci.tutorials.shop.data.messages";
     private static final String CONFIG_BASE_NAME = "me.loganfarci.tutorials.shop.data.config";
@@ -51,12 +52,12 @@ public class ProductManager {
             "it-IT", new ResourceFormatter(new Locale("it", "IT"))
     );
 
+    public static ProductManager getInstance() { return instance; }
     public static Set<String> getSupportedLocales() {
         return formatters.keySet();
     }
 
     private Map<Product, List<Review>> products = new HashMap<>();
-    private ResourceFormatter formatter;
     private ResourceBundle config = ResourceBundle.getBundle(CONFIG_BASE_NAME);
     private MessageFormat reviewFormat = new MessageFormat(config.getString("review.data.format"));
     private MessageFormat productFormat = new MessageFormat(config.getString("product.data.format"));
@@ -64,12 +65,7 @@ public class ProductManager {
     private Path dataFolder = Path.of(config.getString("data.folder"));
     private Path tempFolder = Path.of(config.getString("temp.folder"));
 
-    public ProductManager(Locale locale) {
-        this(locale.toLanguageTag());
-    }
-
-    public ProductManager(String languageTag) {
-        changeLocale(languageTag);
+    private ProductManager() {
         loadAllData();
     }
 
@@ -80,7 +76,8 @@ public class ProductManager {
                 .orElseThrow(() -> new ProductManagerException("Unknown product id: " + id));
     }
 
-    public Map<String, String> getDiscounts() {
+    public Map<String, String> getDiscounts(String languageTag) {
+        ResourceFormatter formatter = formatters.getOrDefault(languageTag, formatters.get("en-GB"));
         return products.keySet()
                 .stream()
                 .collect(
@@ -90,10 +87,6 @@ public class ProductManager {
                                         Collectors.summingDouble(p -> p.getDiscount().doubleValue()),
                                         discount -> formatter.moneyFormat.format(discount)
                                 )));
-    }
-
-    public void changeLocale(String languageTag) {
-        formatter = formatters.getOrDefault(languageTag, formatters.get("en-GB"));
     }
 
     public Product createProduct(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
@@ -132,8 +125,9 @@ public class ProductManager {
         return null;
     }
 
-    public void printProductReport(Product product) throws IOException {
+    public void printProductReport(Product product, String languageTag) throws IOException {
         List<Review> reviews = products.get(product);
+        ResourceFormatter formatter = formatters.getOrDefault(languageTag, formatters.get("en-GB"));
         Collections.sort(reviews);
         Path productFile = reportsFolder.resolve(MessageFormat.format(config.getString("report.file"), product.getId()));
         try (PrintWriter out = new PrintWriter(new OutputStreamWriter(Files.newOutputStream(productFile, StandardOpenOption.CREATE)))) {
@@ -148,9 +142,9 @@ public class ProductManager {
         }
     }
 
-    public void printProductReport(int id) {
+    public void printProductReport(int id, String languageTag) {
         try {
-            printProductReport(findProduct(id));
+            printProductReport(findProduct(id), languageTag);
         } catch (ProductManagerException e) {
             logger.info(e.getMessage());
         } catch (IOException e) {
@@ -158,8 +152,9 @@ public class ProductManager {
         }
     }
 
-    public void printProducts(Predicate<Product> filter, Comparator<Product> sorter) {
+    public void printProducts(Predicate<Product> filter, Comparator<Product> sorter, String languageTag) {
         StringBuilder txt = new StringBuilder();
+        ResourceFormatter formatter = formatters.getOrDefault(languageTag, formatters.get("en-GB"));
         txt.append(products.keySet()
                 .stream()
                 .filter(filter)

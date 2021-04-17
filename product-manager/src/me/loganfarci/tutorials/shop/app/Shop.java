@@ -18,10 +18,6 @@ package me.loganfarci.tutorials.shop.app;
 
 import me.loganfarci.tutorials.shop.data.*;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.Period;
-
 /**
  * {@code Shop} class represents an application that manages Products.
  * @version 4.0
@@ -29,18 +25,10 @@ import java.time.Period;
  */
 public class Shop {
     public static void main(String[] args) {
-        ProductManager manager = new ProductManager("fr-BE");
-//        manager.printProductReport(101);
-//        manager.printProductReport(102);
-//        manager.printProductReport(103);
-//        manager.printProductReport(104);
-//        manager.printProducts(p -> true, (a, b) -> b.getRating().ordinal() - a.getRating().ordinal());
-//
-//        manager.createProduct(237, "Tiramisù", BigDecimal.valueOf(7.99), Rating.FIVE_RATED, LocalDate.now().plus(Period.ofDays(3)));
-//        manager.reviewProduct(237, Rating.THREE_RATED, "It was ok I guess.");
-//        manager.reviewProduct(237, Rating.TWO_RATED, "I hated it.");
-//        manager.reviewProduct(237, Rating.FIVE_RATED, "Mamma mia! It was so good.");
-//
-//        manager.printProductReport(237);
+        ProductManager manager = ProductManager.getInstance();
+        manager.printProductReport(101, "it-IT");
+        manager.printProductReport(102, "en-GB");
+        manager.printProductReport(103, "fr-BE");
+        manager.printProducts(p -> true, (a, b) -> b.getRating().ordinal() - a.getRating().ordinal(), "fr-FR");
     }
 }
