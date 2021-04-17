@@ -26,9 +26,8 @@ import me.loganfarci.tutorials.shop.data.*;
 public class Shop {
     public static void main(String[] args) {
         ProductManager manager = ProductManager.getInstance();
-        manager.printProductReport(101, "it-IT");
-        manager.printProductReport(102, "en-GB");
-        manager.printProductReport(103, "fr-BE");
-        manager.printProducts(p -> true, (a, b) -> b.getRating().ordinal() - a.getRating().ordinal(), "fr-FR");
+//        manager.printProductReport(101, "it-IT");
+//        manager.printProductReport(102, "en-GB");
+//        manager.printProductReport(103, "fr-BE");
     }
 }
