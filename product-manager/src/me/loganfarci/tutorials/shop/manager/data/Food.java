@@ -14,17 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with Java Trove Examples. If not, see <http://www.gnu.org/licenses/>.
  */
-package me.loganfarci.tutorials.shop.data;
+package me.loganfarci.tutorials.shop.manager.data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 public final class Food extends Product {
 
     private LocalDate bestBefore;
 
-    Food(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
+    public Food(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
         super(id, name, price, rating);
         this.bestBefore = bestBefore;
     }

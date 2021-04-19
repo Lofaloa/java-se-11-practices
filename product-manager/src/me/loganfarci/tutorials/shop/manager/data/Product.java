@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Java Trove Examples. If not, see <http://www.gnu.org/licenses/>.
  */
-package me.loganfarci.tutorials.shop.data;
+package me.loganfarci.tutorials.shop.manager.data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -23,7 +23,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import static java.math.RoundingMode.HALF_UP;
-import static me.loganfarci.tutorials.shop.data.Rating.*;
 
 /**
  * {@code Product} class represents properties and behaviors of
@@ -58,7 +57,7 @@ public abstract class Product implements Rateable<Product>, Serializable {
     }
 
     public Product(int id, String name, BigDecimal price) {
-        this(id, name, price, NOT_RATED);
+        this(id, name, price, Rating.NOT_RATED);
     }
 
     public Product() {

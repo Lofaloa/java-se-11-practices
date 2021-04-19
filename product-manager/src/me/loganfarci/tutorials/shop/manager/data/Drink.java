@@ -14,24 +14,26 @@
  * You should have received a copy of the GNU General Public License
  * along with Java Trove Examples. If not, see <http://www.gnu.org/licenses/>.
  */
-package me.loganfarci.tutorials.shop.data;
+package me.loganfarci.tutorials.shop.manager.data;
 
-public enum Rating {
+import java.math.BigDecimal;
+import java.time.LocalTime;
 
-    NOT_RATED("\u2606\u2606\u2606\u2606\u2606"),
-    ONE_RATED("\u2605\u2606\u2606\u2606\u2606"),
-    TWO_RATED("\u2605\u2605\u2606\u2606\u2606"),
-    THREE_RATED("\u2605\u2605\u2605\u2606\u2606"),
-    FOUR_RATED("\u2605\u2605\u2605\u2605\u2606"),
-    FIVE_RATED("\u2605\u2605\u2605\u2605\u2605");
+public final class Drink extends Product {
 
-    private final String stars;
-
-    Rating(final String stars) {
-        this.stars = stars;
+    public Drink(int id, String name, BigDecimal price, Rating rating) {
+        super(id, name, price, rating);
     }
 
-    public String getStars() {
-        return stars;
+    @Override
+    public BigDecimal getDiscount() {
+        LocalTime now = LocalTime.now();
+        return (now.isAfter(LocalTime.of(17, 30)) && now.isBefore(LocalTime.of(18, 30)))
+                ? super.getDiscount() : BigDecimal.ZERO;
+    }
+
+    @Override
+    public Product applyRating(Rating rating) {
+        return new Drink(getId(), getName(), getPrice(), rating);
     }
 }

@@ -14,19 +14,25 @@
  * You should have received a copy of the GNU General Public License
  * along with Java Trove Examples. If not, see <http://www.gnu.org/licenses/>.
  */
-package me.loganfarci.tutorials.shop.data;
+package me.loganfarci.tutorials.shop.manager.data;
 
-public class ProductManagerException extends Exception {
+@FunctionalInterface
+public interface Rateable<T> {
 
-    public ProductManagerException() {
-        super();
+    public static final Rating DEFAULT_RATING = Rating.NOT_RATED;
+
+    public static Rating convert(int stars) {
+        return (0 <= stars && stars <= 5) ? Rating.values()[stars] : DEFAULT_RATING;
     }
 
-    public ProductManagerException(String message) {
-        super(message);
+    public default Rating getRating() {
+        return DEFAULT_RATING;
     }
 
-    public ProductManagerException(String message, Throwable cause) {
-        super(message, cause);
+    default T applyRating(int stars) {
+        return applyRating(convert(stars));
     }
+
+    T applyRating(Rating rating);
+
 }

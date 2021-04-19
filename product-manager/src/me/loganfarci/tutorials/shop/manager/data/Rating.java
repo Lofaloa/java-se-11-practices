@@ -14,35 +14,24 @@
  * You should have received a copy of the GNU General Public License
  * along with Java Trove Examples. If not, see <http://www.gnu.org/licenses/>.
  */
-package me.loganfarci.tutorials.shop.data;
+package me.loganfarci.tutorials.shop.manager.data;
 
-import java.io.Serializable;
+public enum Rating {
 
-public class Review implements Comparable<Review>, Serializable {
+    NOT_RATED("\u2606\u2606\u2606\u2606\u2606"),
+    ONE_RATED("\u2605\u2606\u2606\u2606\u2606"),
+    TWO_RATED("\u2605\u2605\u2606\u2606\u2606"),
+    THREE_RATED("\u2605\u2605\u2605\u2606\u2606"),
+    FOUR_RATED("\u2605\u2605\u2605\u2605\u2606"),
+    FIVE_RATED("\u2605\u2605\u2605\u2605\u2605");
 
-    private Rating rating;
-    private String comments;
+    private final String stars;
 
-    public Review(Rating rating, String comments) {
-        this.rating = rating;
-        this.comments = comments;
+    Rating(final String stars) {
+        this.stars = stars;
     }
 
-    public Rating getRating() {
-        return rating;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Rating: %s, Comments: %s\n", rating.getStars(), comments);
-    }
-
-    @Override
-    public int compareTo(Review other) {
-        return other.rating.ordinal() - this.rating.ordinal();
+    public String getStars() {
+        return stars;
     }
 }
