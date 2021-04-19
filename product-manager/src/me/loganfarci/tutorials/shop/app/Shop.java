@@ -18,7 +18,6 @@ package me.loganfarci.tutorials.shop.app;
 
 import me.loganfarci.tutorials.shop.data.*;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
