@@ -1,34 +1,66 @@
 Chapter 3: Java Object-Oriented Approach
 -------------------------------------------------------------------------------
 
-    Attempt 1 (17/04/2021)
-        01. C
-        02. C, F
-        03. A, C
-        04. B
-        05. F
-        06. B
-        07. B
-        08. B, D
-        09. D, E
-        10. E
-        11. C
-        12. E
-        13. E
-        14. A, B, F
-        15. B
-        16. D
-        17. C
-        18. A
-        19. C
-        20. C, B
-        21. E
-        22. B
-        23. C
-        24. C
-        25. B
-        26. E
-        27. B
-        28. D
-        29. C
-        30. D
+    Attempt 1 (17/04/2021) Rate: 13/30
+        01. C [ERROR]
+        02. C, F [CORRECT]
+        03. A, C [ERROR]
+        04. B [ERROR]
+        05. F [ERROR]
+        06. B [ERROR]
+        07. B [CORRECT]
+        08. B, D [CORRECT]
+        09. D, E [ERROR]
+        10. E [ERROR]
+        11. C [CORRECT]
+        12. E [CORRECT]
+        13. E [CORRECT]
+        14. A, B, F [ERROR]
+        15. B [CORRECT]
+        16. D [ERROR]
+        17. C [CORRECT]
+        18. A [ERROR]
+        19. C [ERROR]
+        20. C, B [ERROR]
+        21. E [ERROR]
+        22. B [CORRECT]
+        23. C [CORRECT]
+        24. C [CORRECT]
+        25. B [CORRECT]
+        26. E [ERROR]
+        27. B [ERROR]
+        28. D [CORRECT]
+        29. C [ERROR]
+        30. D [ERROR]
+
+    Attempt 2 (20/04/2021) Rate: 19/30
+        31. A, F [CORRECT]
+        32. D [CORRECT]
+        33. B, C, F [ERROR]
+        34. B, D [ERROR]
+        35. C [CORRECT]
+        36. C [ERROR]
+        37. C [ERROR]
+        38. F [ERROR]
+        39. C [CORRECT]
+        40. B [CORRECT]
+        41. A, C, D [ERROR]
+        42. A [ERROR]
+        43. A [ERROR]
+        44. F [CORRECT]
+        45. B, D [CORRECT]
+        46. C [CORRECT]
+        47. E [CORRECT]
+        48. A [CORRECT]
+        49. B, F [ERROR]
+        50. B [ERROR]
+        51. C [CORRECT]
+        52. C [CORRECT]
+        53. B, D [CORRECT]
+        54. B [CORRECT]
+        55. E [CORRECT]
+        56. E [CORRECT]
+        57. B [CORRECT]
+        58. A [ERROR]
+        59. C [CORRECT]
+        60. D [CORRECT]
