@@ -1,0 +1,20 @@
+Chapter 4: Exception Handling
+-------------------------------------------------------------------------------
+
+    Attempt 1 (20/04/2021) Rate: 8/15
+        01. B [CORRECT]
+        02. C [ERROR]
+        03. A, C [CORRECT]
+        04. B [ERROR]
+        05. E [CORRECT]
+        06. A [ERROR]
+        07. B [ERROR]
+        08. D [CORRECT]
+        09. D, F [ERROR]
+        10. D [ERROR]
+        11. C [CORRECT]
+        12. C [CORRECT]
+        13. C [CORRECT]
+        14. C, F [ERROR]
+        15. A [CORRECT]
+     
