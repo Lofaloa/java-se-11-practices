@@ -1,0 +1,27 @@
+Chapter 14: Practice Exam 1 
+-------------------------------------------------------------------------------
+
+    Attempt 1 (21/04/2021) Rate: 9/22 
+        01. E [ERROR]
+        02. A, D [ERROR]
+        03. D [ERROR]
+        04. B, C, E [CORRECT]
+        05. B [CORRECT]
+        06. E [CORRECT]
+        07. B [ERROR]
+        08. B [ERROR]
+        09. B [ERROR]
+        10. A [ERROR]
+        11. A [ERROR]
+        12. B [ERROR]
+        13. B, E, F [CORRECT]
+        14. C [CORRECT]
+        15. B [ERROR]
+        16. E [ERROR]
+        17. F [ERROR]
+        18. B [CORRECT]
+        19. D [CORRECT]
+        20. D [CORRECT]
+        21. A, B, C [ERROR]
+        22. C [CORRECT]
+     
