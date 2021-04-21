@@ -1,0 +1,21 @@
+Chapter 5: Working with Arrays and Collections 
+-------------------------------------------------------------------------------
+
+    Attempt 1 (20/04/2021) Rate: 6/15 
+        01. C [ERROR]
+        02. B [CORRECT]
+        03. F [ERROR]
+        04. B, E [CORRECT]
+        05. C [CORRECT]
+        06. A [ERROR]
+        07. A [ERROR]
+        08. C [ERROR]
+        09. B [CORRECT]
+        10. B [CORRECT]
+        11. C [CORRECT]
+        12. A, F [ERROR]
+        13. B [ERROR]
+        14. A [ERROR]
+        15. A, E [ERROR]
+        
+     
